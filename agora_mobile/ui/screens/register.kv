@@ -1,0 +1,135 @@
+<RegisterScreen>:
+    name: 'register'
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        MDLabel:
+            text: "Crear Cuenta"
+            font_size: "26sp"
+            pos_hint: {"center_x": .5, "center_y": .85}
+            halign: "center"
+
+        MDLabel:
+            text: "Regístrate para comenzar"
+            font_size: "14sp"
+            pos_hint: {"center_x": .5, "center_y": .79}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .6, .6, .6, 1
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .65}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            
+            TextInput:
+                id: name_input
+                hint_text: "Nombre Completo"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .55}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            
+            TextInput:
+                id: email_input_register
+                hint_text: "Correo Electrónico"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .45}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            
+            TextInput:
+                id: password_input_register
+                hint_text: "Contraseña"
+                password: True
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .35}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+
+            TextInput:
+                id: role_input
+                hint_text: "Rol (developer, master, votante)"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDRaisedButton:
+            text: "Registrarse"
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .23}
+            font_size: "18sp"
+            md_bg_color: 0, 0, 0, 1
+            on_release: root.register_user()
+        
+        MDLabel:
+            text: "¿Ya tienes una cuenta?"
+            font_size: "14sp"
+            pos_hint: {"center_x": .5, "center_y": .15}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .6, .6, .6, 1
+        
+        MDTextButton:
+            text: "Inicia Sesión"
+            pos_hint: {"center_x": .5, "center_y": .1}
+            font_size: "14sp"
+            color: 0, 0, 0, 1
+            on_release: root.manager.current = 'login' 

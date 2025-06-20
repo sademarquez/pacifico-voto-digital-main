@@ -1,0 +1,50 @@
+<DashboardMasterScreen>:
+    name: 'dashboard_master'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Panel de Master"
+            elevation: 4
+            right_action_items: [["logout", lambda x: app.root.get_screen('login').auth_service.logout()]]
+
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: "15dp"
+                spacing: "15dp"
+                adaptive_height: True
+
+                MDLabel:
+                    text: "Gestión de Equipo"
+                    font_style: "H6"
+                    adaptive_height: True
+
+                MDRaisedButton:
+                    text: "Crear Cuenta de Candidato"
+                    icon: "account-plus"
+                    on_release: root.show_create_user_dialog("candidato")
+
+                MDRaisedButton:
+                    text: "Crear Cuenta de Líder"
+                    icon: "account-star"
+                    on_release: root.show_create_user_dialog("lider")
+
+                MDLabel:
+                    text: "Estadísticas de Campaña"
+                    font_style: "H6"
+                    adaptive_height: True
+                
+                MDLabel:
+                    id: master_result_label
+                    text: "Aquí se mostrarán los resultados de las acciones."
+                    adaptive_height: True
+                    halign: "center"
+                
+                MDSpinner:
+                    id: master_spinner
+                    size_hint: None, None
+                    size: "46dp", "46dp"
+                    pos_hint: {'center_x': 0.5}
+                    active: False 

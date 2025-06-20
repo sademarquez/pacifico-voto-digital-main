@@ -1,0 +1,129 @@
+<LoginScreen>:
+    name: 'login'
+
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        MDLabel:
+            text: "Bienvenido de vuelta"
+            font_size: "26sp"
+            pos_hint: {"center_x": .5, "center_y": .8}
+            halign: "center"
+
+        MDLabel:
+            text: "Inicia sesión para continuar"
+            font_size: "14sp"
+            pos_hint: {"center_x": .5, "center_y": .75}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .6, .6, .6, 1
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .6}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            
+            TextInput:
+                id: email_input
+                hint_text: "Correo Electrónico"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .48}
+            canvas.before:
+                Color:
+                    rgba: (.9, .9, .9, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            
+            TextInput:
+                id: password_input
+                hint_text: "Contraseña"
+                password: True
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 0, 0, 0, .8
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_size: "16sp"
+
+        MDTextButton:
+            text: "¿Olvidaste tu contraseña?"
+            pos_hint: {"center_x": .5, "center_y": .38}
+            font_size: "14sp"
+            color: 0, 0, 0, 1
+
+        MDRaisedButton:
+            text: "Ingresar"
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .28}
+            font_size: "18sp"
+            md_bg_color: 0, 0, 0, 1
+            on_release: root.login_user()
+        
+        MDLabel:
+            text: "¿No tienes una cuenta?"
+            font_size: "14sp"
+            pos_hint: {"center_x": .5, "center_y": .18}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .6, .6, .6, 1
+        
+        MDTextButton:
+            text: "Regístrate ahora"
+            pos_hint: {"center_x": .5, "center_y": .13}
+            font_size: "14sp"
+            color: 0, 0, 0, 1
+            on_release: root.manager.current = 'register'
+            on_release: root.manager.transition.direction = 'left'
+
+        # --- Acceso rápido a roles para pruebas ---
+        MDLabel:
+            text: "Acceso rápido por rol (demo)"
+            font_size: "14sp"
+            pos_hint: {"center_x": .5, "center_y": .08}
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: .4, .4, .4, 1
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint: .95, .07
+            pos_hint: {"center_x": .5, "center_y": .04}
+            spacing: '5dp'
+            MDFlatButton:
+                text: "Master"
+                on_release: root.manager.current = 'dashboard_master'
+            MDFlatButton:
+                text: "Candidato"
+                on_release: root.manager.current = 'dashboard_candidato'
+            MDFlatButton:
+                text: "Líder"
+                on_release: root.manager.current = 'dashboard_lider'
+            MDFlatButton:
+                text: "Votante"
+                on_release: root.manager.current = 'dashboard_votante'
+            MDFlatButton:
+                text: "Publicidad"
+                on_release: root.manager.current = 'dashboard_publicidad'
+            MDFlatButton:
+                text: "Desarrollador"
+                on_release: root.manager.current = 'dashboard_developer' 

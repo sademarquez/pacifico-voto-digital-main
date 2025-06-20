@@ -1,0 +1,84 @@
+<DashboardScreen>:
+    name: 'dashboard'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: root.get_role_display()
+            elevation: 4
+            left_action_items: [["menu", lambda x: x]]
+            right_action_items: [["console", lambda x: app.root.current = 'terminal_simulada'], ["logout", lambda x: root.logout()]]
+
+        ScreenManager:
+            id: screen_manager
+            
+            # --- Pantalla de Chat ---
+            MDScreen:
+                name: "screen_chat"
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: "15dp"
+                    spacing: "15dp"
+
+                    # Área para mostrar la conversación
+                    ScrollView:
+                        id: chat_scroll
+                        MDList:
+                            id: chat_list
+                            # Los mensajes se agregarán aquí dinámicamente
+
+                    # Área de entrada de texto
+                    MDFloatLayout:
+                        size_hint_y: None
+                        height: "60dp"
+                        
+                        MDTextField:
+                            id: message_input
+                            hint_text: "Escribe tu mensaje..."
+                            mode: "round"
+                            size_hint_x: .85
+                            pos_hint: {'center_x': .45, 'center_y': .5}
+
+                        MDIconButton:
+                            icon: "send"
+                            pos_hint: {'center_x': .9, 'center_y': .5}
+                            on_release: root.send_message()
+
+            # --- Pantalla de Análisis (Placeholder) ---
+            MDScreen:
+                name: "screen_analytics"
+                MDLabel:
+                    text: "Análisis"
+                    halign: "center"
+
+            # --- Pantalla de Equipo (Placeholder) ---
+            MDScreen:
+                name: "screen_team"
+                MDLabel:
+                    text: "Equipo"
+                    halign: "center"
+
+        MDBottomNavigation:
+            panel_color: .9, .9, .9, 1
+            selected_color_background: "orange"
+            text_color_active: 0, 0, 0, 1
+
+            MDBottomNavigationItem:
+                name: 'screen_chat'
+                text: 'Chat'
+                icon: 'chat'
+                on_tab_press: screen_manager.current = self.name
+
+            MDBottomNavigationItem:
+                name: 'screen_analytics'
+                text: 'Análisis'
+                icon: 'analytics'
+                on_tab_press: screen_manager.current = self.name
+
+            MDBottomNavigationItem:
+                name: 'screen_team'
+                text: 'Equipo'
+                icon: 'account-group'
+                on_tab_press: screen_manager.current = self.name 

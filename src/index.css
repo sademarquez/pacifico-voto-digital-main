@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sistema de diseño sobrio y profesional para política transparente */
+
+@layer base {
+  :root {
+    --color-primary: #1E3A8A; /* Azul por defecto */
+    --color-accent: #FBBF24;  /* Dorado por defecto */
+
+    --background: 0 0% 100%;
+    --foreground: 210 15% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 15% 25%;
+
+    --primary: 210 45% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 10% 95%;
+    --secondary-foreground: 210 15% 25%;
+
+    --muted: 210 8% 96%;
+    --muted-foreground: 210 10% 50%;
+
+    --accent: 210 20% 85%;
+    --accent-foreground: 210 15% 25%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 10% 88%;
+    --input: 210 10% 90%;
+    --ring: 210 45% 35%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 210 8% 98%;
+    --sidebar-foreground: 210 15% 30%;
+    --sidebar-primary: 210 45% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 10% 92%;
+    --sidebar-accent-foreground: 210 15% 25%;
+    --sidebar-border: 210 10% 85%;
+    --sidebar-ring: 210 45% 35%;
+  }
+
+  .dark {
+    --background: 210 20% 8%;
+    --foreground: 210 25% 95%;
+
+    --card: 210 20% 10%;
+    --card-foreground: 210 25% 95%;
+
+    --popover: 210 20% 10%;
+    --popover-foreground: 210 25% 95%;
+
+    --primary: 210 50% 65%;
+    --primary-foreground: 210 20% 8%;
+
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 210 25% 95%;
+
+    --muted: 210 15% 15%;
+    --muted-foreground: 210 15% 70%;
+
+    --accent: 210 30% 20%;
+    --accent-foreground: 210 25% 95%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 210 25% 95%;
+
+    --border: 210 15% 20%;
+    --input: 210 15% 20%;
+    --ring: 210 50% 65%;
+
+    --sidebar-background: 210 20% 6%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 210 50% 65%;
+    --sidebar-primary-foreground: 210 20% 8%;
+    --sidebar-accent: 210 15% 12%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 210 15% 18%;
+    --sidebar-ring: 210 50% 65%;
+  }
+
+  body {
+    @apply bg-white text-gray-800;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+/* Gradientes sobrios y profesionales */
+.gradient-primary {
+  background: linear-gradient(135deg, #374151 0%, #6b7280 50%, #f9fafb 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 50%, #ffffff 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #4b5563 0%, #9ca3af 50%, #f8fafc 100%);
+}
+
+/* Efectos 3D y sombras personalizadas */
+.shadow-3d {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-3d-hover {
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-3d {
+  transform: perspective(1000px) rotateX(0deg);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) translateY(-8px);
+}
+
+/* Mejoras responsivas para móvil */
+@media (max-width: 768px) {
+  .container {
+    @apply px-3;
+  }
+  
+  .card {
+    @apply shadow-md;
+  }
+  
+  .text-3xl {
+    @apply text-2xl;
+  }
+  
+  .text-2xl {
+    @apply text-xl;
+  }
+  
+  .py-8 {
+    @apply py-4;
+  }
+  
+  .py-6 {
+    @apply py-3;
+  }
+
+  /* Espaciado adicional para la navegación inferior */
+  body {
+    @apply pb-20;
+  }
+}
+
+/* Animaciones suaves */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

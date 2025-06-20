@@ -1,0 +1,44 @@
+<TerminalSimuladaScreen>:
+    name: 'terminal_simulada'
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '10dp'
+
+        MDLabel:
+            text: 'Terminal Simulada'
+            font_size: '22sp'
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1] + 20
+
+        ScrollView:
+            MDLabel:
+                id: output_area
+                text: root.output_text
+                font_name: 'RobotoMono'
+                font_size: '14sp'
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                halign: 'left'
+                valign: 'top'
+
+        MDTextField:
+            id: comando_input
+            hint_text: 'Escribe un comando...'
+            mode: 'rectangle'
+            size_hint_y: None
+            height: '40dp'
+            on_text_validate: root.ejecutar_comando()
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            spacing: '10dp'
+            MDRaisedButton:
+                text: 'Ejecutar'
+                on_release: root.ejecutar_comando()
+            MDFlatButton:
+                text: 'Volver al Login'
+                on_release: root.volver_login() 

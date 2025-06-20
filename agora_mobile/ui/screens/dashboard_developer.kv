@@ -1,0 +1,91 @@
+<DashboardDeveloperScreen>:
+    name: 'dashboard_developer'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Panel de Desarrollador"
+            elevation: 4
+            right_action_items: [["logout", lambda x: root.logout() if hasattr(root, 'logout') else app.root.get_screen('login').auth_service.logout()]]
+
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: "15dp"
+                spacing: "15dp"
+                adaptive_height: True
+
+                MDLabel:
+                    text: "Acciones Rápidas"
+                    font_style: "H6"
+                    adaptive_height: True
+
+                GridLayout:
+                    cols: 2
+                    spacing: "15dp"
+                    size_hint_y: None
+                    height: "120dp"
+
+                    MDRaisedButton:
+                        text: "Crear Master"
+                        icon: "account-plus"
+                        on_release: root.create_master_account()
+                    
+                    MDRaisedButton:
+                        text: "Gestionar APIs"
+                        icon: "key-variant"
+                        on_release: root.manage_api_keys()
+
+                MDLabel:
+                    text: "Estado del Sistema"
+                    font_style: "H6"
+                    adaptive_height: True
+
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "10dp"
+                    
+                    MDLabel:
+                        text: "Métricas Globales"
+                    MDList:
+                        OneLineIconListItem:
+                            text: "Cuentas Master: 5"
+                            IconLeftWidget:
+                                icon: "account-group"
+                        OneLineIconListItem:
+                            text: "Uso de API: 75%"
+                            IconLeftWidget:
+                                icon: "api"
+
+                MDCard:
+                    id: audit_card
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: "10dp"
+                    spacing: "10dp"
+                    
+                    MDLabel:
+                        text: "Auditoría"
+                        font_style: "Button"
+
+                    MDRaisedButton:
+                        text: "Ejecutar Auditoría del Sistema"
+                        icon: "shield-check"
+                        on_release: root.run_system_audit()
+                    
+                    MDSpinner:
+                        id: audit_spinner
+                        size_hint: None, None
+                        size: "46dp", "46dp"
+                        pos_hint: {'center_x': 0.5}
+                        active: False
+
+                    MDLabel:
+                        id: audit_result_label
+                        text: "Presione el botón para iniciar la auditoría."
+                        adaptive_height: True
+                        halign: "center" 

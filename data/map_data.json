@@ -1,0 +1,17 @@
+{
+  "candidato": [
+    {"lat": 4.60971, "lng": -74.08175, "label": "Hotspot Votantes - Centro", "type": "hotspot"},
+    {"lat": 4.658333, "lng": -74.096667, "label": "Zona a Visitar - Teusaquillo", "type": "event"}
+  ],
+  "lider": [
+    {"lat": 4.624335, "lng": -74.063644, "label": "Líder Zonal - Juan Pérez", "type": "leader"},
+    {"lat": 4.639386, "lng": -74.082413, "label": "Reunión de Equipo", "type": "meeting"}
+  ],
+  "votante": [
+    {"lat": 4.60285, "lng": -74.0648, "label": "Puesto Votación - Colegio Nacional", "type": "polling_station"},
+    {"lat": 4.6784, "lng": -74.0435, "label": "Puesto Votación - Universidad del Norte", "type": "polling_station"}
+  ],
+  "default": [
+    {"lat": 4.648625, "lng": -74.090333, "label": "Sede Principal de Campaña", "type": "headquarters"}
+  ]
+} 

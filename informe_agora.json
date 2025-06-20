@@ -1,0 +1,46 @@
+{
+  "resumen": "Plataforma modular y gamificada para gestión de campañas políticas digitales, con frontend en React/Vite, backend en Python (Flask) y Node/Express. Incluye roles diferenciados, automatización, integración con mapas y experiencia de usuario tipo videojuego.",
+  "arquitectura": {
+    "frontend": "React + Vite (src/)",
+    "backend_python": "Flask (agora_mobile/)",
+    "backend_node": "Express (agora-agents/)",
+    "base_datos": "data/",
+    "automatizacion": "Integración con n8n"
+  },
+  "checklist_funcionalidades": [
+    "Autenticación y roles (master, candidato, líder, votante, publicidad, desarrollador)",
+    "Paneles y herramientas específicas por rol",
+    "Interfaz moderna, responsiva y gamificada",
+    "Paleta de colores dinámica (azul, blanco, dorado)",
+    "Barra de navegación móvil",
+    "Google Maps y marcadores por rol",
+    "Automatización y workflows (n8n)",
+    "Experiencia gamificada (logros, progresión, animaciones)",
+    "Testing y debugging",
+    "Documentación técnica"
+  ],
+  "despliegue_local": [
+    "Clona el repositorio: git clone <URL_DEL_REPOSITORIO> && cd pacifico-voto-digital-main",
+    "Instala dependencias: npm install, cd agora-agents && npm install, cd ../agora_mobile && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "Levanta los servicios: Frontend: npm run dev, Backend Node: cd agora-agents && node index.js, Backend Flask: cd agora_mobile && source venv/bin/activate && python api_server.py",
+    "Accede a http://localhost:8080 y prueba los paneles."
+  ],
+  "despliegue_vps": [
+    "Acceso SSH y actualización: ssh usuario@IP_DEL_VPS, sudo apt update && sudo apt upgrade -y, sudo apt install git python3 python3-venv python3-pip nodejs npm nginx ufw -y, sudo npm install -g pm2",
+    "Clona el repositorio y repite los pasos de instalación.",
+    "Configura variables de entorno en archivos .env.",
+    "Usa PM2 para mantener los servicios activos: pm2 start index.js --name agora-agents, pm2 start api_server.py --interpreter python3 --name agora-mobile",
+    "Configura Nginx para servir el frontend y hacer proxy a los backends.",
+    "Instala SSL con Let's Encrypt: sudo apt install certbot python3-certbot-nginx -y, sudo certbot --nginx",
+    "Configura el firewall: sudo ufw allow OpenSSH, sudo ufw allow 'Nginx Full', sudo ufw enable"
+  ],
+  "seguridad": [
+    "Usa HTTPS siempre",
+    "Mantén las variables de entorno fuera del repositorio",
+    "Actualiza dependencias y sistema regularmente",
+    "Usa usuarios no root para los servicios",
+    "Realiza backups periódicos",
+    "Monitorea logs y accesos"
+  ],
+  "contacto": "Para dudas o soporte, contacta al equipo de desarrollo."
+} 

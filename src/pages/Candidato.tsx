@@ -1,8 +1,12 @@
 import { FC, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
-import { User, Users, Zap, Instagram, MessageCircle, Download, Plus, Settings2 } from "lucide-react";
+import { User, Users, Zap, Instagram, MessageCircle, Download, Plus, Settings2, MapPin } from "lucide-react";
 import TestingButton from "@/components/TestingButton";
 import AgentTools from "@/components/AgentTools";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Shield, Target, MessageSquare, BarChart3, Bot } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const mockTeam = [
   { nombre: "Ana López", rol: "Líder de zona", canal: "WhatsApp", tareas: 12 },

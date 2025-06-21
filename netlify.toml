@@ -1,0 +1,18 @@
+# Reglas de Redirección y Proxy de Netlify
+
+# Esta es la regla para el backend de Python (Flask)
+[[redirects]]
+  # Cuando el frontend pida cualquier cosa que empiece por /api/...
+  from = "/api/*"
+  # ...Netlify, en secreto, lo redirigirá a tu VPS en el puerto 5001.
+  to = "http://31.97.140.106:5001/:splat" 
+  # El status 200 lo convierte en un proxy.
+  status = 200
+
+# Esta es la regla para el backend de Node.js (Agents)
+[[redirects]]
+  # Cuando el frontend pida cualquier cosa que empiece por /agentes/...
+  from = "/agentes/*"
+  # ...Netlify lo redirigirá al otro backend en el puerto 3001.
+  to = "http://31.97.140.106:3001/:splat"
+  status = 200 

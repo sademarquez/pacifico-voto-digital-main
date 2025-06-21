@@ -22,10 +22,10 @@ export const ThemeProvider: FC<{children: ReactNode}> = ({ children }) => {
   useEffect(() => {
     const fetchTheme = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/theme');
-        const data: Theme = await response.json();
-        if (data.primary && data.accent) {
-          setTheme(data);
+        const response = await fetch('/api/theme');
+        const data = await response.json();
+        if (data.theme) {
+          setTheme(data.theme);
         }
       } catch (error) {
         console.error("No se pudo cargar el tema de la API, usando valores por defecto.", error);

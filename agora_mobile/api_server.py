@@ -16,8 +16,7 @@ from agora_mobile.services.auth_service import AuthService
 load_dotenv()
 
 app = Flask(__name__)
-# Permitir CORS para que el frontend de React (ej. en localhost:8080) pueda llamar a esta API
-CORS(app)
+CORS(app) # Esto permite peticiones desde cualquier origen
 
 # --- Inicialización Singleton del Cerebro y Servicios ---
 # Se crea una única instancia para toda la aplicación

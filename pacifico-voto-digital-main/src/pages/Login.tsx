@@ -168,23 +168,24 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-negro-50 via-verde-sistema-50 to-negro-100 relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
           
           {/* Panel de Login */}
-          <Card className="w-full border-2 border-verde-sistema-200 shadow-2xl bg-white/95 backdrop-blur-lg">
+          <Card className="w-full bg-glass border-2 border-primary/20 shadow-hard animate-fade-in">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-verde-sistema-600 to-negro-800 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Shield className="text-white w-8 h-8" />
+              <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-medium">
+                <Shield className="text-white w-10 h-10" />
               </div>
-              <CardTitle className="text-2xl font-bold text-negro-900">
+              <CardTitle className="text-3xl font-bold text-foreground">
                 {app.companyName}
               </CardTitle>
-              <p className="text-negro-600">{app.systemName}</p>
+              <p className="text-muted-foreground">{app.systemName}</p>
               {app.demoMode && (
-                <div className="bg-verde-sistema-100 p-2 rounded-lg mt-2 border border-verde-sistema-300">
-                  <p className="text-verde-sistema-800 text-sm font-medium">🎮 MODO DEMO ACTIVO - ACCESO LIBRE</p>
+                <div className="bg-accent/20 p-2 rounded-lg mt-4 border border-accent/30">
+                  <p className="text-accent text-sm font-medium">🎮 MODO DEMO ACTIVO</p>
                 </div>
               )}
             </CardHeader>
@@ -197,20 +198,20 @@ const Login = () => {
                 </Alert>
               )}
               
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="username" className="text-negro-700 font-medium">
+                  <Label htmlFor="username">
                     Usuario o Email
                   </Label>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 h-4 w-4 text-negro-400" />
+                    <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                     <Input
                       id="username"
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Desarrollador o dev@demo.com"
-                      className="pl-10 border-2 border-negro-300 focus:border-verde-sistema-500"
+                      placeholder="ej: dev@demo.com"
+                      className="pl-10 h-12 text-lg"
                       required
                       disabled={isLoading}
                     />
@@ -218,18 +219,18 @@ const Login = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-negro-700 font-medium">
+                  <Label htmlFor="password">
                     Contraseña
                   </Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-negro-400" />
+                    <Lock className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="12345678"
-                      className="pl-10 pr-10 border-2 border-negro-300 focus:border-verde-sistema-500"
+                      placeholder="••••••••"
+                      className="pl-10 h-12 text-lg"
                       required
                       disabled={isLoading}
                     />
@@ -237,146 +238,80 @@ const Login = () => {
                       type="button"
                       variant="ghost"
                       size="icon"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-negro-400 hover:text-negro-600"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                       onClick={() => setShowPassword(!showPassword)}
                       disabled={isLoading}
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </Button>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-4">
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-verde-sistema-600 to-negro-800 hover:from-verde-sistema-700 hover:to-negro-900 text-white font-bold py-3" 
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 h-12 text-lg"
                     disabled={isLoading}
                   >
                     {isLoading ? "Autenticando..." : "Iniciar Sesión"}
                   </Button>
                   
-                  {app.demoMode && (
+                  <div className="grid grid-cols-2 gap-4">
                     <Button
                       type="button"
                       variant="outline"
                       onClick={handleDemoAccess}
-                      className="w-full border-2 border-verde-sistema-500 text-verde-sistema-700 hover:bg-verde-sistema-50 flex items-center gap-2 font-bold py-3"
+                      className="h-12 text-lg"
                       disabled={isLoading}
                     >
-                      <Play className="w-4 h-4" />
-                      🎮 ACCESO DIRECTO AL DEMO
-                      <Play className="w-4 h-4" />
+                      <Play className="w-5 h-5 mr-2" />
+                      Demo
                     </Button>
-                  )}
-                  
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={handleVisitorAccess}
-                    className="w-full border-2 border-rojo-acento-500 text-rojo-acento-700 hover:bg-rojo-acento-50 flex items-center gap-2 font-bold py-3"
-                    disabled={isLoading}
-                  >
-                    <Users className="w-4 h-4" />
-                    Acceso Visitantes
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
-                  
-                  <div className="grid grid-cols-2 gap-2">
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => setShowCredentials(!showCredentials)}
-                      className="border-2 border-verde-sistema-500 text-verde-sistema-700 hover:bg-verde-sistema-50"
+                      onClick={handleVisitorAccess}
+                      className="h-12 text-lg"
                       disabled={isLoading}
                     >
-                      {showCredentials ? "Ocultar" : "Ver"} Credenciales Demo
-                    </Button>
-                    
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => navigate("/mobile-audit")}
-                      className="border-2 border-negro-500 text-negro-700 hover:bg-negro-50 flex items-center gap-2"
-                      disabled={isLoading}
-                    >
-                      Auditoría App
+                      <Users className="w-5 h-5 mr-2" />
+                      Visitante
                     </Button>
                   </div>
                 </div>
               </form>
-              
-              <div className="mt-4 p-3 bg-verde-sistema-50 rounded-lg text-xs text-verde-sistema-700 border border-verde-sistema-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-4 h-4 text-verde-sistema-600" />
-                  <strong className="text-verde-sistema-900">✅ Sistema Demo Completamente Funcional</strong>
-                </div>
-                <p>• ✅ Usuarios creados en base de datos Supabase</p>
-                <p>• ✅ Contraseña: <strong>12345678</strong></p>
-                <p>• ✅ Login y navegación automática al dashboard</p>
-                <p>• ✅ Redirección automática funcionando perfectamente</p>
-                <p>• ✅ Integración N8N lista para configurar</p>
-                <p>• 🆕 <strong>Acceso directo para demo sin restricciones</strong></p>
-                <p>• 🎯 <strong>Acceso para visitantes configurado</strong></p>
-              </div>
             </CardContent>
           </Card>
 
           {/* Panel de Credenciales Demo */}
           {showCredentials && (
-            <Card className="w-full border-2 border-verde-sistema-200 shadow-2xl bg-white/95 backdrop-blur-lg">
+            <Card className="w-full bg-glass border-2 border-primary/20 shadow-hard animate-slide-up">
               <CardHeader>
-                <CardTitle className="text-verde-sistema-800 text-xl flex items-center gap-2">
-                  <CheckCircle className="w-6 h-6" />
-                  🔥 Credenciales Demo - Base de Datos Real
+                <CardTitle className="text-foreground text-2xl flex items-center gap-3">
+                  <CheckCircle className="w-7 h-7 text-accent" />
+                  Credenciales de Acceso
                 </CardTitle>
-                <p className="text-verde-sistema-600">Login automático al dashboard con base de datos Supabase</p>
+                <p className="text-muted-foreground">Utiliza estos perfiles para explorar la PWA.</p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {verifiedCredentials.map((cred, index) => (
-                    <div key={index} className="p-4 border-2 border-verde-sistema-100 rounded-lg hover:bg-verde-sistema-50 transition-colors">
-                      <div className="flex items-center justify-between mb-3">
+                  {verifiedCredentials.map((cred) => (
+                    <div key={cred.email} className="p-4 bg-background/50 rounded-lg hover:bg-background transition-colors shadow-soft">
+                      <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-bold text-lg text-negro-900">{cred.name}</div>
-                          <div className="text-sm text-negro-600">{cred.description}</div>
-                          <div className="text-xs text-verde-sistema-600 font-medium">
-                            📧 {cred.email}
-                          </div>
+                          <div className="font-bold text-lg text-foreground">{cred.name}</div>
+                          <div className="text-sm text-muted-foreground">{cred.description}</div>
                         </div>
                         <Button
-                          variant="outline"
                           size="sm"
                           onClick={() => useCredential(cred)}
-                          className="text-verde-sistema-700 border-verde-sistema-500 hover:bg-verde-sistema-100"
                           disabled={isLoading}
                         >
                           Usar
                         </Button>
                       </div>
-                      <div className="bg-negro-100 p-2 rounded text-xs font-mono border">
-                        <div><strong>Usuario:</strong> {cred.name}</div>
-                        <div><strong>Email:</strong> {cred.email}</div>
-                        <div><strong>Contraseña:</strong> {cred.password}</div>
-                      </div>
                     </div>
                   ))}
-                </div>
-                
-                <div className="mt-6 p-4 bg-gradient-to-r from-verde-sistema-50 to-negro-50 rounded-lg border-2 border-verde-sistema-200">
-                  <h3 className="font-bold text-sm text-verde-sistema-800 mb-3">🚀 INICIAR SESIÓN POR ROL</h3>
-                  <div className="grid grid-cols-2 gap-2">
-                    {verifiedCredentials.map((cred, index) => (
-                      <Button
-                        key={index}
-                        variant="outline"
-                        onClick={() => useCredential(cred)}
-                        className="text-verde-sistema-700 border-verde-sistema-500 hover:bg-verde-sistema-100"
-                        disabled={isLoading}
-                      >
-                        {cred.name}
-                      </Button>
-                    ))}
-                  </div>
                 </div>
               </CardContent>
             </Card>

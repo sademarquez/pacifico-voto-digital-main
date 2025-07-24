@@ -1,3 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  base = "pacifico-voto-digital-main"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 # Reglas de Redirección y Proxy de Netlify
 
 # Esta es la regla para el backend de Python (Flask)

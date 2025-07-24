@@ -28,12 +28,16 @@ const DashboardDesarrollador = () => {
     );
   }
 
+import ConfiguracionDesarrollador from "./ConfiguracionDesarrollador";
+
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="bg-glass p-8 rounded-lg shadow-hard">
         <h1 className="text-4xl font-bold text-foreground">Dashboard Desarrollador</h1>
         <p className="text-lg text-muted-foreground">Herramientas y supervisión del sistema.</p>
       </div>
+
+      <ConfiguracionDesarrollador />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (

@@ -1,42 +1,24 @@
-# Entornos virtuales de Python
-/agora_env/
-/venv/
-*.venv
-__pycache__/
-*.pyc
-
-# Dependencias de Node.js
-/node_modules/
-/pacifico-voto-digital-main/node_modules/
-/agora-agents/node_modules/
-
-# Archivos de build y empaquetado
-/dist/
-/build/
-*.apk
-*.aab
-
-# Archivos de log y temporales
+# Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Archivos del sistema operativo
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
-
-# Archivos de configuración de IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Archivos de entorno
-.env
-.env.*
-!.env.example
-
-# Buildozer
-.buildozer/
-bin/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

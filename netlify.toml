@@ -1,7 +1,6 @@
 [build]
-  command = "vite build"
-  publish = "dist"
-  base = "pacifico-voto-digital-main"
+  command = "cd pacifico-voto-digital-main && npm run build"
+  publish = "pacifico-voto-digital-main/dist"
 
 [[redirects]]
   from = "/*"

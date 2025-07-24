@@ -184,8 +184,8 @@ const Login = () => {
               </CardTitle>
               <p className="text-muted-foreground">{app.systemName}</p>
               {app.demoMode && (
-                <div className="bg-accent/20 p-2 rounded-lg mt-4 border border-accent/30">
-                  <p className="text-accent text-sm font-medium">🎮 MODO DEMO ACTIVO</p>
+                <div className="bg-primary/10 p-2 rounded-lg mt-4 border border-primary/20">
+                  <p className="text-primary text-sm font-medium">🎮 MODO DEMO ACTIVO</p>
                 </div>
               )}
             </CardHeader>

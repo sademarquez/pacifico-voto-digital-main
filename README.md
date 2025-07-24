@@ -1,80 +1,73 @@
-# Agora / Pacífico Voto Digital
+# Welcome to your Lovable project
 
-## Resumen
-Plataforma modular y gamificada para gestión de campañas políticas digitales, con frontend en React/Vite, backend en Python (Flask) y Node/Express. Incluye roles diferenciados, automatización, integración con mapas y experiencia de usuario tipo videojuego.
+## Project info
 
-## Arquitectura
-- **Frontend:** React + Vite (src/)
-- **Backend Python:** Flask (agora_mobile/)
-- **Backend Node:** Express (agora-agents/)
-- **Base de datos y datos:** data/
-- **Automatización:** Integración con n8n
+**URL**: https://lovable.dev/projects/0104ad57-5112-4547-bf3c-092c7fdb1b88
 
-## Checklist de funcionalidades
-- [x] Autenticación y roles (master, candidato, líder, votante, publicidad, desarrollador)
-- [x] Paneles y herramientas específicas por rol
-- [x] Interfaz moderna, responsiva y gamificada
-- [x] Paleta de colores dinámica (azul, blanco, dorado)
-- [x] Barra de navegación móvil
-- [x] Google Maps y marcadores por rol
-- [x] Automatización y workflows (n8n)
-- [x] Experiencia gamificada (logros, progresión, animaciones)
-- [x] Testing y debugging
-- [x] Documentación técnica
+## How can I edit this code?
 
-## Instrucciones de despliegue local
-1. Clona el repositorio:
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd pacifico-voto-digital-main
-   ```
-2. Instala dependencias:
-   ```bash
-   npm install
-   cd agora-agents && npm install
-   cd ../agora_mobile && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
-   ```
-3. Levanta los servicios:
-   - Frontend: `npm run dev`
-   - Backend Node: `cd agora-agents && node index.js`
-   - Backend Flask: `cd agora_mobile && source venv/bin/activate && python api_server.py`
-4. Accede a [http://localhost:8080](http://localhost:8080) y prueba los paneles.
+There are several ways of editing your application.
 
-## Instrucciones de despliegue en VPS Ubuntu
-1. Acceso SSH y actualización:
-   ```bash
-   ssh usuario@IP_DEL_VPS
-   sudo apt update && sudo apt upgrade -y
-   sudo apt install git python3 python3-venv python3-pip nodejs npm nginx ufw -y
-   sudo npm install -g pm2
-   ```
-2. Clona el repositorio y repite los pasos de instalación.
-3. Configura variables de entorno en archivos `.env`.
-4. Usa PM2 para mantener los servicios activos:
-   ```bash
-   pm2 start index.js --name agora-agents
-   pm2 start api_server.py --interpreter python3 --name agora-mobile
-   ```
-5. Configura Nginx para servir el frontend y hacer proxy a los backends.
-6. Instala SSL con Let's Encrypt:
-   ```bash
-   sudo apt install certbot python3-certbot-nginx -y
-   sudo certbot --nginx
-   ```
-7. Configura el firewall:
-   ```bash
-   sudo ufw allow OpenSSH
-   sudo ufw allow 'Nginx Full'
-   sudo ufw enable
-   ```
+**Use Lovable**
 
-## Recomendaciones de seguridad
-- Usa HTTPS siempre
-- Mantén las variables de entorno fuera del repositorio
-- Actualiza dependencias y sistema regularmente
-- Usa usuarios no root para los servicios
-- Realiza backups periódicos
-- Monitorea logs y accesos
+Simply visit the [Lovable Project](https://lovable.dev/projects/0104ad57-5112-4547-bf3c-092c7fdb1b88) and start prompting.
 
-## Contacto y soporte
-Para dudas o soporte, contacta al equipo de desarrollo.
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/0104ad57-5112-4547-bf3c-092c7fdb1b88) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

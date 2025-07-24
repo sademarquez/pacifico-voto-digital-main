@@ -42,11 +42,18 @@ const SistemaMensajeria = () => {
     content: string;
     priority: 'low' | 'medium' | 'high';
     category: 'general' | 'emergency' | 'coordination' | 'event' | 'campaign';
+    recipient_id: string | null;
   }>({
     subject: '',
     content: '',
     priority: 'medium',
-    category: 'general'
+    category: 'general',
+    recipient_id: null,
+  });
+
+  const { data: recipients = [], isLoading: isLoadingRecipients } = useQuery({
+    queryKey: ['recipients'],
+    queryFn: getMessageRecipients,
   });
 
   const { data: messages = [], isLoading, refetch } = useQuery({
@@ -59,7 +66,7 @@ const SistemaMensajeria = () => {
       const { data, error } = await supabase
         .from('messages')
         .select('*')
-        .eq('sender_id', user.id)
+        .or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`)
         .order('created_at', { ascending: false });
       
       if (error) {
@@ -86,6 +93,22 @@ const SistemaMensajeria = () => {
     refetchOnWindowFocus: false,
   });
 
+  useEffect(() => {
+    if (!user) return;
+
+    const subscription = supabase
+      .channel('messages')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
+        console.log('📨 Nuevo mensaje recibido:', payload);
+        refetch();
+      })
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [user, refetch]);
+
   const handleSendMessage = async () => {
     if (!user || !newMessage.subject.trim() || !newMessage.content.trim()) {
       toast({
@@ -108,7 +131,8 @@ const SistemaMensajeria = () => {
           category: newMessage.category,
           status: 'sent',
           sent_at: new Date().toISOString(),
-          sender_id: user.id
+          sender_id: user.id,
+          recipient_id: newMessage.recipient_id
         });
 
       if (error) {
@@ -199,6 +223,26 @@ const SistemaMensajeria = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Destinatario</label>
+              <Select
+                value={newMessage.recipient_id || ''}
+                onValueChange={(value: string) =>
+                  setNewMessage(prev => ({ ...prev, recipient_id: value }))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Seleccionar destinatario..." />
+                </SelectTrigger>
+                <SelectContent>
+                  {recipients.map(recipient => (
+                    <SelectItem key={recipient.id} value={recipient.id}>
+                      {recipient.name} ({recipient.role})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
             <div>
               <label className="block text-sm font-medium mb-2">Asunto</label>
               <Input

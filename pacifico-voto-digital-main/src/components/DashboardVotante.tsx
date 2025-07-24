@@ -30,24 +30,29 @@ const DashboardVotante = () => {
   const navigate = useNavigate();
   const [activeGoal, setActiveGoal] = useState(0);
 
-  const voterGoals = [
-    { title: "Invitar 5 amigos", progress: 80, reward: "Badge Embajador", icon: Users },
-    { title: "Participar en 3 eventos", progress: 60, reward: "Reconocimiento Público", icon: Calendar },
-    { title: "Completar perfil 100%", progress: 95, reward: "Acceso VIP", icon: Target },
-    { title: "Compartir en redes", progress: 40, reward: "Sticker Exclusivo", icon: MessageSquare }
-  ];
+  const {
+    data: voterGoals,
+    isLoading: isLoadingVoterGoals,
+  } = useQuery({
+    queryKey: ["voterGoals"],
+    queryFn: getVoterGoals,
+  });
 
-  const upcomingEvents = [
-    { name: "Reunión Vecinal", date: "2025-06-18", location: "Salón Comunal", participants: 45 },
-    { name: "Caminata por el Barrio", date: "2025-06-20", location: "Parque Central", participants: 78 },
-    { name: "Charla Propuestas", date: "2025-06-22", location: "Biblioteca", participants: 32 }
-  ];
+  const {
+    data: upcomingEvents,
+    isLoading: isLoadingUpcomingEvents,
+  } = useQuery({
+    queryKey: ["upcomingEvents"],
+    queryFn: getUpcomingEvents,
+  });
 
-  const achievements = [
-    { title: "Primer Voto Digital", date: "Hace 5 días", icon: Trophy },
-    { title: "Invitación Exitosa", date: "Hace 3 días", icon: Users },
-    { title: "Participación Activa", date: "Ayer", icon: Heart }
-  ];
+  const {
+    data: achievements,
+    isLoading: isLoadingAchievements,
+  } = useQuery({
+    queryKey: ["achievements"],
+    queryFn: getAchievements,
+  });
 
   return (
     <div className="space-y-6 animate-fade-in">

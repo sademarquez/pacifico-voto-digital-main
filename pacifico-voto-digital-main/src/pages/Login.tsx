@@ -16,7 +16,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showCredentials, setShowCredentials] = useState(false);
+  const [showCredentials, setShowCredentials] = useState(true);
   
   const { login, authError, clearAuthError, isAuthenticated, isLoading } = useSecureAuth();
   const { verifiedCredentials, getEmailFromName } = useDemoCredentials();
@@ -119,7 +119,7 @@ const Login = () => {
 
   const useCredential = (credential: any) => {
     console.log('🎯 USANDO CREDENCIAL:', credential.name);
-    setUsername(credential.name);
+    setUsername(credential.email);
     setPassword(credential.password);
     clearAuthError();
     toast({
@@ -363,21 +363,19 @@ const Login = () => {
                 </div>
                 
                 <div className="mt-6 p-4 bg-gradient-to-r from-verde-sistema-50 to-negro-50 rounded-lg border-2 border-verde-sistema-200">
-                  <h3 className="font-bold text-sm text-verde-sistema-800 mb-3">🚀 SISTEMA 100% FUNCIONAL CON N8N</h3>
-                  <div className="text-xs text-negro-700 space-y-2">
-                    <div>1. <strong>Acceso Directo:</strong> Botón "ACCESO DIRECTO AL DEMO" para probar sin login</div>
-                    <div>2. <strong>Credenciales:</strong> Selecciona una credencial con "Usar"</div>
-                    <div>3. <strong>Login:</strong> Haz clic en "Iniciar Sesión"</div>
-                    <div>4. <strong>Dashboard:</strong> Automáticamente te redirige al dashboard</div>
-                    <div>5. <strong>N8N:</strong> Configura desde el panel de componentes</div>
-                    <div className="mt-3 p-2 bg-verde-sistema-100 rounded border border-verde-sistema-300">
-                      <strong className="text-verde-sistema-800">🎯 ACCESO VISITANTES:</strong> 
-                      <br />URL configurable en <code>src/config/appConfig.ts</code>
-                    </div>
-                    <div className="mt-2 p-2 bg-rojo-acento-100 rounded border border-rojo-acento-300">
-                      <strong className="text-rojo-acento-800">🎮 MODO DEMO:</strong> 
-                      <br />Acceso libre a todas las funciones sin restricciones
-                    </div>
+                  <h3 className="font-bold text-sm text-verde-sistema-800 mb-3">🚀 INICIAR SESIÓN POR ROL</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {verifiedCredentials.map((cred, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        onClick={() => useCredential(cred)}
+                        className="text-verde-sistema-700 border-verde-sistema-500 hover:bg-verde-sistema-100"
+                        disabled={isLoading}
+                      >
+                        {cred.name}
+                      </Button>
+                    ))}
                   </div>
                 </div>
               </CardContent>

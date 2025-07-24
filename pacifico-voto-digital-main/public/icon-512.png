@@ -1,2 +1,6 @@
-
-<!-- Esta sería una imagen PNG de 512x512 con el mismo diseño. Por limitaciones, uso SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M50,5A45,45,0,1,1,5,50,45,45,0,0,1,50,5M50,0a50,50,0,1,0,50,50A50,50,0,0,0,50,0Z" fill="#007bff"/>
+  <path d="M50,20,70,35V65L50,80,30,65V35Z" fill="#fff"/>
+  <path d="M50,23,67,36.5V63.5L50,77,33,63.5V36.5Z" fill="#007bff"/>
+  <polygon points="50 42 36 50 50 58 64 50 50 42" fill="#fff"/>
+</svg>

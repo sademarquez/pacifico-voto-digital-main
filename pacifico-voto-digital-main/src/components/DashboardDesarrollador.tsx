@@ -29,17 +29,22 @@ const DashboardDesarrollador = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-negro-950 mb-2">Dashboard Desarrollador</h1>
-      <p className="text-negro-600 mb-8">
-        Este es el dashboard para el rol de desarrollador.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="space-y-8 animate-fade-in">
+      <div className="bg-glass p-8 rounded-lg shadow-hard">
+        <h1 className="text-4xl font-bold text-foreground">Dashboard Desarrollador</h1>
+        <p className="text-lg text-muted-foreground">Herramientas y supervisión del sistema.</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <div key={index} className="p-4 border-2 border-verde-sistema-100 rounded-lg">
-            <h2 className="font-bold text-lg text-negro-900">{project.name}</h2>
-            <p className="text-sm text-negro-600">{project.description}</p>
-          </div>
+          <Card key={index} className="bg-glass shadow-medium">
+            <CardHeader>
+              <CardTitle>{project.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>{project.description}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
